@@ -220,7 +220,7 @@ export type CreateRelationInput = {
 export type CreateRemoteServerInput = {
   foreignDataWrapperOptions: Scalars['JSON']['input'];
   foreignDataWrapperType: Scalars['String']['input'];
-  userMappingOptions?: InputMaybe<Scalars['JSON']['input']>;
+  userMappingOptions?: InputMaybe<UserMappingOptionsInput>;
 };
 
 export type CursorPaging = {
@@ -380,6 +380,7 @@ export type Mutation = {
   updateBillingSubscription: UpdateBillingEntity;
   updateOneField: Field;
   updateOneObject: Object;
+  updateOneRemoteServer: RemoteServer;
   updatePasswordViaResetToken: InvalidatePassword;
   updateWorkspace: Workspace;
   uploadFile: Scalars['String']['output'];
@@ -524,6 +525,11 @@ export type MutationUpdateOneFieldArgs = {
 
 export type MutationUpdateOneObjectArgs = {
   input: UpdateOneObjectInput;
+};
+
+
+export type MutationUpdateOneRemoteServerArgs = {
+  input: UpdateRemoteServerInput;
 };
 
 
@@ -995,6 +1001,12 @@ export type UpdateOneObjectInput = {
   update: UpdateObjectInput;
 };
 
+export type UpdateRemoteServerInput = {
+  foreignDataWrapperOptions?: InputMaybe<Scalars['JSON']['input']>;
+  id: Scalars['String']['input'];
+  userMappingOptions?: InputMaybe<UserMappingOptionsInput>;
+};
+
 export type UpdateWorkspaceInput = {
   allowImpersonation?: InputMaybe<Scalars['Boolean']['input']>;
   displayName?: InputMaybe<Scalars['String']['input']>;
@@ -1037,6 +1049,11 @@ export type UserEdge = {
 export type UserExists = {
   __typename?: 'UserExists';
   exists: Scalars['Boolean']['output'];
+};
+
+export type UserMappingOptionsInput = {
+  password?: InputMaybe<Scalars['String']['input']>;
+  username?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type UserWorkspace = {
